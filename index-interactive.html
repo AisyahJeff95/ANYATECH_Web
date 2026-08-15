@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ANYA — Solving Impossibilities (Interactive Ants)</title>
+  <meta name="description" content="ANYATECH - Interactive Ant Colony Edition. Move cursor over screen to divert the walking ants!">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Ensure UI layers smoothly above background canvas */
+    .header, .hero-content, .section, .footer, .search-modal-backdrop {
+      position: relative;
+      z-index: 2;
+    }
+    .hero-glow {
+      z-index: 1;
+    }
+    .ant-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--brand-accent);
+      background: rgba(93, 84, 244, 0.08);
+      border: 1px solid rgba(93, 84, 244, 0.2);
+      padding: 0.35rem 0.85rem;
+      border-radius: 20px;
+      margin-bottom: 1.25rem;
+      animation: pulseGlow 2s infinite alternate;
+    }
+    .ant-icon-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--brand-accent);
+      box-shadow: 0 0 6px var(--brand-accent);
+    }
+    @keyframes pulseGlow {
+      from { opacity: 0.8; }
+      to { opacity: 1; border-color: rgba(93, 84, 244, 0.5); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Background Interactive Canvas -->
+  <canvas id="antsCanvas" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: 0; pointer-events: none;"></canvas>
+
+  <!-- Navigation Header -->
+  <header class="header" id="header">
+    <div class="nav-container">
+      <a href="index.html" class="nav-brand">
+        ANYA
+      </a>
+
+      <nav class="nav-menu">
+        <li class="nav-item">
+          <a href="index.html" class="nav-link">Home</a>
+        </li>
+
+        <!-- AnyaTech Dropdown -->
+        <li class="nav-item">
+          <a href="index.html#services" class="nav-link">
+            AnyaTech
+            <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M6 9l6 6 6-6"/></svg>
+          </a>
+          <div class="dropdown-menu">
+            <div class="dropdown-grid">
+              <a href="landing-pages.html" class="dropdown-card">
+                <div>
+                  <div class="dropdown-title">Landing Pages Development</div>
+                  <div class="dropdown-desc">High-converting sales & marketing landing pages.</div>
+                </div>
+              </a>
+              <a href="website-development.html" class="dropdown-card">
+                <div>
+                  <div class="dropdown-title">Website Development</div>
+                  <div class="dropdown-desc">Multi-page corporate & business web experiences.</div>
+                </div>
+              </a>
+              <a href="lms-development.html" class="dropdown-card">
+                <div>
+                  <div class="dropdown-title">LMS Development</div>
+                  <div class="dropdown-desc">Custom learning management platforms & portals.</div>
+                </div>
+              </a>
+              <a href="app-development.html" class="dropdown-card">
+                <div>
+                  <div class="dropdown-title">App Development</div>
+                  <div class="dropdown-desc">Mobile & cross-platform web applications.</div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </li>
+
+        <!-- Anya Lab Dropdown -->
+        <li class="nav-item">
+          <a href="anya-lab.html" class="nav-link">
+            Anya Lab
+            <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M6 9l6 6 6-6"/></svg>
+          </a>
+          <div class="dropdown-menu">
+            <div class="dropdown-grid">
+              <a href="anya-lab.html#research" class="dropdown-card">
+                <div>
+                  <div class="dropdown-title">Our Research Work</div>
+                  <div class="dropdown-desc">Frontier research whitepapers & neuro-inspired AI models.</div>
+                </div>
+              </a>
+              <a href="anya-lab.html#collab" class="dropdown-card">
+                <div>
+                  <div class="dropdown-title">Collab with Us</div>
+                  <div class="dropdown-desc">Partner with Anya Lab on frontier R&D initiatives.</div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </li>
+
+        <!-- About ANYA Dropdown -->
+        <li class="nav-item">
+          <a href="index.html#about" class="nav-link">
+            About ANYA
+            <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M6 9l6 6 6-6"/></svg>
+          </a>
+          <div class="dropdown-menu">
+            <div class="dropdown-grid">
+              <a href="index.html#about" class="dropdown-card">
+                <div>
+                  <div class="dropdown-title">Company Overview</div>
+                  <div class="dropdown-desc">Our mission, vision, and core principles.</div>
+                </div>
+              </a>
+              <a href="index.html#team" class="dropdown-card">
+                <div>
+                  <div class="dropdown-title">Leadership & Team</div>
+                  <div class="dropdown-desc">Meet the engineers and researchers behind ANYA.</div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </li>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="search-btn" id="searchBtn" aria-label="Open Search">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+        </button>
+      </div>
+
+      <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle Navigation Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-glow"></div>
+    <div class="hero-content">
+      <div class="ant-badge">
+        <span class="ant-icon-dot"></span>
+        Interactive Top-Down Cat — Leaving fading pawprints (hover cursor to divert)
+      </div>
+      <h1 class="hero-title">ANYA</h1>
+      <p class="hero-subtitle">Solving Impossibilities</p>
+      
+      <div class="hero-cta">
+        <div class="projects-dropdown">
+          <a href="#tech" class="btn-primary">
+            Projects
+            <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" style="width: 14px; height: 14px; stroke-width: 2.5; margin-left: 4px;"><path d="M6 9l6 6 6-6"/></svg>
+          </a>
+          <div class="projects-dropdown-content">
+            <a href="landing-pages.html" class="projects-dropdown-item">Landing Pages Development</a>
+            <a href="website-development.html" class="projects-dropdown-item">Website Development</a>
+            <a href="lms-development.html" class="projects-dropdown-item">LMS Development</a>
+            <a href="app-development.html" class="projects-dropdown-item">App Development</a>
+          </div>
+        </div>
+        <a href="anya-lab.html" class="btn-secondary">Discover Anya Lab</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Anya Tech Section -->
+  <section class="section" id="tech">
+    <div class="section-header">
+      <span class="section-tag">Anya Tech Platform</span>
+      <h2 class="section-title">Engineered for Frontier Performance</h2>
+      <p class="section-desc">Building resilient infrastructure and intelligent algorithms to unlock next-level computational capabilities.</p>
+    </div>
+
+    <div class="cards-grid">
+      <div class="feature-card">
+        <div class="card-icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+        </div>
+        <h3 class="card-title">Quantum Neural Compute</h3>
+        <p class="card-desc">Low-power, ultra-high bandwidth hardware acceleration engineered specifically for multi-modal AI systems.</p>
+        <a href="#" class="card-link">
+          Read Architecture Spec
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+
+      <div class="feature-card">
+        <div class="card-icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg>
+        </div>
+        <h3 class="card-title">Autonomous Cloud Mesh</h3>
+        <p class="card-desc">Self-healing distributed systems that optimize workload allocation across global node clusters in sub-milliseconds.</p>
+        <a href="#" class="card-link">
+          Explore Cloud Mesh
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+
+      <div class="feature-card">
+        <div class="card-icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h3 class="card-title">Zero-Trust Cryptography</h3>
+        <p class="card-desc">Post-quantum homomorphic encryption ensuring complete data privacy across untrusted execution environments.</p>
+        <a href="#" class="card-link">
+          View Security Paper
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Anya Lab Section -->
+  <section class="section" id="lab">
+    <div class="lab-banner">
+      <div class="lab-banner-content">
+        <span class="section-tag" style="color: #8E86FF;">Anya Innovation Lab</span>
+        <h3>Experimental R&D & Open Science</h3>
+        <p>Where mathematical breakthroughs turn into production-ready software. We share our open research to empower the global developer ecosystem.</p>
+        <a href="#lab" class="btn-primary" style="background: #5D54F4;">Join Open Research</a>
+      </div>
+
+      <div class="lab-stats">
+        <div class="stat-item">
+          <div class="stat-number">48+</div>
+          <div class="stat-label">Published Papers</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">99.9%</div>
+          <div class="stat-label">System Uptime</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">12M+</div>
+          <div class="stat-label">API Requests/Sec</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">100%</div>
+          <div class="stat-label">Open Source Engine</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="section" id="about">
+    <div class="section-header">
+      <span class="section-tag">About ANYA</span>
+      <h2 class="section-title">Driven by Continuous Innovation</h2>
+      <p class="section-desc">We are a collective of researchers, engineers, and designers dedicated to expanding human potential through technology.</p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <h4>ANYA</h4>
+        <p>Solving Impossibilities through quantum-ready algorithms and autonomous intelligent systems.</p>
+        <div class="status-badge">
+          <span class="status-dot"></span>
+          All Systems Operational
+        </div>
+      </div>
+
+      <div class="footer-column">
+        <h5>Technology</h5>
+        <ul class="footer-links">
+          <li><a href="#tech">Neural Compute</a></li>
+          <li><a href="#tech">Autonomous Cloud</a></li>
+          <li><a href="#tech">Zero-Trust Encryption</a></li>
+          <li><a href="#tech">API Documentation</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h5>Anya Lab</h5>
+        <ul class="footer-links">
+          <li><a href="#lab">Whitepapers</a></li>
+          <li><a href="#lab">Open Source Repos</a></li>
+          <li><a href="#lab">Grants & Fellowships</a></li>
+          <li><a href="#lab">Benchmarks</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h5>Company</h5>
+        <ul class="footer-links">
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#about">Careers</a></li>
+          <li><a href="#about">Press Kit</a></li>
+          <li><a href="#about">Contact Support</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div>&copy; 2026 ANYATECH Inc. All rights reserved.</div>
+      <div>Designed & Built for Ultra Performance</div>
+    </div>
+  </footer>
+
+  <!-- Search Modal Overlay -->
+  <div class="search-modal-backdrop" id="searchModalBackdrop">
+    <div class="search-modal">
+      <div class="search-input-header">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+        <input type="text" class="search-input" id="searchInput" placeholder="Search ANYATECH products, whitepapers, or docs... (Esc to close)">
+        <button class="search-close-btn" onclick="document.getElementById('searchModalBackdrop').classList.remove('active')">ESC</button>
+      </div>
+
+      <div class="search-results-list" id="searchResultsList">
+        <!-- Results populated dynamically via script.js -->
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

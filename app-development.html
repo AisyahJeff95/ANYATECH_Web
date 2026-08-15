@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>App Development Templates — ANYATECH</title>
+  <meta name="description" content="Explore iOS, Android, and web application development templates with upfront pricing, monthly maintenance, and delivery timelines by ANYATECH.">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .page-hero {
+      padding: 8rem 2rem 3.5rem;
+      text-align: center;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .page-tag {
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--brand-accent);
+      background: rgba(200, 155, 60, 0.15);
+      padding: 0.4rem 1rem;
+      border-radius: 20px;
+      display: inline-block;
+      margin-bottom: 1.25rem;
+    }
+    .page-title {
+      font-family: var(--font-heading);
+      font-size: clamp(2.2rem, 5vw, 3.6rem);
+      font-weight: 800;
+      color: var(--brand-navy);
+      margin-bottom: 1rem;
+      line-height: 1.15;
+    }
+    .page-subtitle {
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+      max-width: 700px;
+      margin: 0 auto;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation Header -->
+  <header class="header" id="header">
+    <div class="nav-container">
+      <a href="index.html" class="nav-brand">
+        ANYA
+      </a>
+
+      <nav class="nav-menu">
+        <li class="nav-item">
+          <a href="index.html" class="nav-link">Home</a>
+        </li>
+
+        <!-- AnyaTech Dropdown -->
+        <li class="nav-item">
+          <a href="index.html#services" class="nav-link" style="color: var(--brand-accent); font-weight: 700;">
+            AnyaTech
+            <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M6 9l6 6 6-6"/></svg>
+          </a>
+          <div class="dropdown-menu">
+            <div class="dropdown-grid">
+              <a href="landing-pages.html" class="dropdown-card">
+                <div>
+                  <div class="dropdown-title">Landing Pages Development</div>
+                  <div class="dropdown-desc">High-converting sales & marketing landing pages.</div>
+                </div>
+              </a>
+              <a href="website-development.html" class="dropdown-card">
+                <div>
+                  <div class="dropdown-title">Website Development</div>
+                  <div class="dropdown-desc">Multi-page corporate & business web experiences.</div>
+                </div>
+              </a>
+              <a href="lms-development.html" class="dropdown-card">
+                <div>
+                  <div class="dropdown-title">LMS Development</div>
+                  <div class="dropdown-desc">Custom learning management platforms & portals.</div>
+                </div>
+              </a>
+              <a href="app-development.html" class="dropdown-card">
+                <div>
+                  <div class="dropdown-title">App Development</div>
+                  <div class="dropdown-desc">Mobile & cross-platform web applications.</div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </li>
+
+        <!-- Anya Lab Dropdown -->
+        <li class="nav-item">
+          <a href="anya-lab.html" class="nav-link">
+            Anya Lab
+            <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M6 9l6 6 6-6"/></svg>
+          </a>
+          <div class="dropdown-menu">
+            <div class="dropdown-grid">
+              <a href="anya-lab.html#research" class="dropdown-card">
+                <div>
+                  <div class="dropdown-title">Our Research Work</div>
+                  <div class="dropdown-desc">Frontier research whitepapers & neuro-inspired AI models.</div>
+                </div>
+              </a>
+              <a href="anya-lab.html#collab" class="dropdown-card">
+                <div>
+                  <div class="dropdown-title">Collab with Us</div>
+                  <div class="dropdown-desc">Partner with Anya Lab on frontier R&D initiatives.</div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </li>
+
+        <!-- About ANYA Dropdown -->
+        <li class="nav-item">
+          <a href="index.html#about" class="nav-link">
+            About ANYA
+            <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M6 9l6 6 6-6"/></svg>
+          </a>
+          <div class="dropdown-menu">
+            <div class="dropdown-grid">
+              <a href="index.html#about" class="dropdown-card">
+                <div>
+                  <div class="dropdown-title">Company Overview</div>
+                  <div class="dropdown-desc">Our mission, vision, and core principles.</div>
+                </div>
+              </a>
+              <a href="index.html#team" class="dropdown-card">
+                <div>
+                  <div class="dropdown-title">Leadership & Team</div>
+                  <div class="dropdown-desc">Meet the engineers and researchers behind ANYA.</div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </li>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="search-btn" id="searchBtn" aria-label="Open Search">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+        </button>
+      </div>
+
+      <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle Navigation Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Page Hero -->
+  <section class="page-hero">
+    <span class="page-tag">App Development Showcase</span>
+    <h1 class="page-title">App Development Templates</h1>
+    <p class="page-subtitle">Native iOS/Android and cross-platform web application frameworks engineered for performance, security, and scalability. View upfront pricing and timelines below.</p>
+  </section>
+
+  <!-- Template Grid Section -->
+  <section class="section" style="padding-top: 1rem; padding-bottom: 5rem;">
+    <div class="container">
+      <div class="template-grid">
+        
+        <!-- Template 1 -->
+        <div class="template-card">
+          <span class="template-badge">TEMPLATE 1</span>
+          <div class="template-img-wrapper">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+          </div>
+          <div class="template-content">
+            <h3 class="template-title">iOS & Android Cross-Platform MVP</h3>
+            <p class="template-desc">Flutter/React Native foundation app with user authentication, profile settings, cloud database Sync, push notifications, and App Store submission setup.</p>
+
+            <div class="template-details-box">
+              <div class="template-detail-row">
+                <span class="template-detail-label">Upfront Price:</span>
+                <span class="template-detail-val accent">RM 14,000</span>
+              </div>
+              <div class="template-detail-row">
+                <span class="template-detail-label">Monthly Maintenance:</span>
+                <span class="template-detail-val">RM 890 / mo</span>
+              </div>
+              <div class="template-detail-row">
+                <span class="template-detail-label">Est. Development Time:</span>
+                <span class="template-detail-val">18 – 25 Days</span>
+              </div>
+            </div>
+
+            <div class="template-actions">
+              <button class="btn-demo" onclick="alert('Demo preview for Template 1 coming soon!')">View Live Demo →</button>
+              <a href="index.html#contact" class="btn-inquire">Select Template</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Template 2 -->
+        <div class="template-card">
+          <span class="template-badge">TEMPLATE 2</span>
+          <div class="template-img-wrapper">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <div class="template-content">
+            <h3 class="template-title">On-Demand Service & Booking Mobile App</h3>
+            <p class="template-desc">Location-based service marketplace with live GPS tracking, provider dispatching, in-app messaging, rating system, and wallet payment processing.</p>
+
+            <div class="template-details-box">
+              <div class="template-detail-row">
+                <span class="template-detail-label">Upfront Price:</span>
+                <span class="template-detail-val accent">RM 18,500</span>
+              </div>
+              <div class="template-detail-row">
+                <span class="template-detail-label">Monthly Maintenance:</span>
+                <span class="template-detail-val">RM 1,200 / mo</span>
+              </div>
+              <div class="template-detail-row">
+                <span class="template-detail-label">Est. Development Time:</span>
+                <span class="template-detail-val">25 – 35 Days</span>
+              </div>
+            </div>
+
+            <div class="template-actions">
+              <button class="btn-demo" onclick="alert('Demo preview for Template 2 coming soon!')">View Live Demo →</button>
+              <a href="index.html#contact" class="btn-inquire">Select Template</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Template 3 -->
+        <div class="template-card">
+          <span class="template-badge">TEMPLATE 3</span>
+          <div class="template-img-wrapper">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg>
+          </div>
+          <div class="template-content">
+            <h3 class="template-title">E-Commerce Mobile Shopping App</h3>
+            <p class="template-desc">Native mobile shopping app featuring product catalog search, wishlist, Apple Pay / Google Pay checkout, order tracking, and promo push alerts.</p>
+
+            <div class="template-details-box">
+              <div class="template-detail-row">
+                <span class="template-detail-label">Upfront Price:</span>
+                <span class="template-detail-val accent">RM 16,800</span>
+              </div>
+              <div class="template-detail-row">
+                <span class="template-detail-label">Monthly Maintenance:</span>
+                <span class="template-detail-val">RM 1,050 / mo</span>
+              </div>
+              <div class="template-detail-row">
+                <span class="template-detail-label">Est. Development Time:</span>
+                <span class="template-detail-val">22 – 30 Days</span>
+              </div>
+            </div>
+
+            <div class="template-actions">
+              <button class="btn-demo" onclick="alert('Demo preview for Template 3 coming soon!')">View Live Demo →</button>
+              <a href="index.html#contact" class="btn-inquire">Select Template</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Template 4 -->
+        <div class="template-card">
+          <span class="template-badge">TEMPLATE 4</span>
+          <div class="template-img-wrapper">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>
+          </div>
+          <div class="template-content">
+            <h3 class="template-title">Community & Social Engagement App</h3>
+            <p class="template-desc">Interactive community app with activity feed, media uploads, real-time chat sockets, user group channels, and notification preferences.</p>
+
+            <div class="template-details-box">
+              <div class="template-detail-row">
+                <span class="template-detail-label">Upfront Price:</span>
+                <span class="template-detail-val accent">RM 15,200</span>
+              </div>
+              <div class="template-detail-row">
+                <span class="template-detail-label">Monthly Maintenance:</span>
+                <span class="template-detail-val">RM 950 / mo</span>
+              </div>
+              <div class="template-detail-row">
+                <span class="template-detail-label">Est. Development Time:</span>
+                <span class="template-detail-val">20 – 28 Days</span>
+              </div>
+            </div>
+
+            <div class="template-actions">
+              <button class="btn-demo" onclick="alert('Demo preview for Template 4 coming soon!')">View Live Demo →</button>
+              <a href="index.html#contact" class="btn-inquire">Select Template</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Template 5 -->
+        <div class="template-card">
+          <span class="template-badge">TEMPLATE 5</span>
+          <div class="template-img-wrapper">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/></svg>
+          </div>
+          <div class="template-content">
+            <h3 class="template-title">Enterprise Operations & Field App</h3>
+            <p class="template-desc">Mission-critical enterprise mobile app for workforce management, offline data sync, barcode scanner, signature capture, and executive dashboard analytics.</p>
+
+            <div class="template-details-box">
+              <div class="template-detail-row">
+                <span class="template-detail-label">Upfront Price:</span>
+                <span class="template-detail-val accent">RM 22,000</span>
+              </div>
+              <div class="template-detail-row">
+                <span class="template-detail-label">Monthly Maintenance:</span>
+                <span class="template-detail-val">RM 1,450 / mo</span>
+              </div>
+              <div class="template-detail-row">
+                <span class="template-detail-label">Est. Development Time:</span>
+                <span class="template-detail-val">30 – 45 Days</span>
+              </div>
+            </div>
+
+            <div class="template-actions">
+              <button class="btn-demo" onclick="alert('Demo preview for Template 5 coming soon!')">View Live Demo →</button>
+              <a href="index.html#contact" class="btn-inquire">Select Template</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-bottom">
+      <div>&copy; 2026 ANYATECH Inc. All rights reserved.</div>
+      <div>App Development Templates</div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
